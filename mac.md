@@ -100,3 +100,18 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 	- 执行source ~/.zshrc
 	
 -------------------------------
+###iterm2克隆会话（clone-session）
+**说明：**
+
+一般IT公司开发，都需要先登入跳板机，然后登入开发机。每次开一个新窗口时，如果都要输入密码，非常麻烦。Windows下用过SecureCRT的人都知道，它只要一次输入密码即可。我们使用mac的iterm2时，也可以实现同样的功能。
+
+**配置：**
+
+1. 修改iterm2配置，iterm2 -> profiles -> open profiles(或者直接cmd+o) -> edit profiles -> general -> reuse previous session's directory
+2. 修改ssh配置文件，vi ~/.ssh/config
+
+	```
+	host *
+   ControlMaster auto
+   ControlPath ~/.ssh/master-%r@%h:%p
+	```
